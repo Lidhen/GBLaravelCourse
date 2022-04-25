@@ -16,8 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/hello/{name}', function ($name) {
+Route::get('/hello/', function () {
     return "Hello, World!";
+});
+Route::get('/news/', function () {
+    return "News list";
 });
 Route::get('/news/{id}', function ($id) {
     return "News detail #$id";
