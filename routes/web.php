@@ -1,20 +1,24 @@
 <?php
 
-$text = 'Привет мир!';
+use Illuminate\Support\Facades\Route;
 
-$title = 'Моя первая страница';
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
 
-Route::get('/', function () use ($text, $title) {
-    return " 
-        <!doctype html>
-        <html lang=\"en\">
-        <head>
-            <meta charset=\"UFT-8\">
-            <title>$title</title>
-        </head>
-        <body>
-            <h1>$text</h1>
-            Lorem ipsum dolor sit amet.
-        </body>
-    ";
+Route::get('/', function () {
+    return view('welcome');
+});
+Route::get('/hello/{name}', function ($name) {
+    return "Hello, World!";
+});
+Route::get('/news/{id}', function ($id) {
+    return "News detail #$id";
 });
