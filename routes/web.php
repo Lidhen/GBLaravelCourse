@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\NewsController;
+use App\Http\Controllers\CategoriesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,12 +17,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/hello/', function () {
-    return "Hello, World!";
-});
-Route::get('/news/', function () {
-    return "News list";
-});
-Route::get('/news/{id}', function ($id) {
-    return "News detail #$id";
-});
+
+Route::get('/news', [NewsController::class, 'index'])->name('NewsList');
+Route::get('/news/сreate', [NewsController::class, 'сreate'])->name('NewsCreate');
+Route::get('/news/{category}/{id}', [NewsController::class, 'detail'])->name('NewsDetail');
+
+
+
+Route::get('/category', [CategoriesController::class, 'index'])->name('CategoryList');
+Route::get('/category/{id}', [CategoriesController::class, 'detail'])->name('CategoryPath');
